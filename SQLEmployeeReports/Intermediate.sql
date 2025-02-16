@@ -42,7 +42,22 @@ SELECT
 FROM PerDeptAvgsalary
 WHERE salary > avgsalary;
 
-Write a query to get the second highest salary from the emp table.
+--Write a query to get the second highest salary from the emp table.
+
+with cte as (
+		select 
+		employee_id,
+		first_name,
+		salary,
+		dense_rank() over (order by salary desc) as drnk
+		from 
+		emp
+)
+
+select * from cte
+where 
+ drnk=2
+ 
 Find the number of employees in each DEPARTMENT_ID, sorted in descending order.
 How do you retrieve employees who were hired in the year 2007?
 Display all employees who have the same JOB_ID as 'Steven King'.
