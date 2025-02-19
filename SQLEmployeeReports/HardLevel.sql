@@ -9,3 +9,13 @@ Write a query to return employees who do not have any subordinates.
 Using a recursive query, display the hierarchy of employees starting from Steven King.
 Find employees who were hired exactly one year before or after another employee.
 Write a query to pivot the employee count by JOB_ID across different DEPARTMENT_ID.
+
+
+--Write a SQL query to calculate the cumulative sum of  SALARY for each department ordered by HIRE_DATE.
+
+SELECT 
+    department_id,
+    hire_date,
+    SUM(salary) OVER (PARTITION BY department_id ORDER BY hire_date ASC) AS "CumulativeSum"
+FROM emp
+ORDER BY department_id, hire_date desc;
