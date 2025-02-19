@@ -43,7 +43,7 @@ WITH session_pairs AS (
 )
 SELECT 
     server_id,
-    SUM(EXTRACT(EPOCH FROM (stop_time - start_time))) AS total_uptime_seconds,
+    --SUM(EXTRACT(EPOCH FROM (stop_time - start_time))) AS total_uptime_seconds,
     SUM(stop_time - start_time) AS total_uptime_interval
 FROM session_pairs
 WHERE stop_time IS NOT NULL
